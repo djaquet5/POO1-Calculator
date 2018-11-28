@@ -20,7 +20,7 @@ public class JCalculator extends JFrame {
     // Contraintes pour le placement des composants graphiques
     private final GridBagConstraints constraints = new GridBagConstraints();
 
-    private Stack<Double> stack = new Stack<Double>();
+    private Stack<Double> values = new Stack<Double>();
     
 
     /*
@@ -112,15 +112,15 @@ public class JCalculator extends JFrame {
         //----------------- Fin number -------------------------------------------
         //----------------- aritmetic --------------------------------------------
         // Operateurs arithmetiques a deux operandes: /, *, -, +
-        addOperatorButton("/", 3, 2, Color.RED, new Division());
-        addOperatorButton("*", 3, 3, Color.RED, new Multiplication());
-        addOperatorButton("-", 3, 4, Color.RED, new Substraction());
-        addOperatorButton("+", 3, 5, Color.RED, new Addition());
+        addOperatorButton("/", 3, 2, Color.RED, new Division(values));
+        addOperatorButton("*", 3, 3, Color.RED, new Multiplication(values));
+        addOperatorButton("-", 3, 4, Color.RED, new Substraction(values));
+        addOperatorButton("+", 3, 5, Color.RED, new Addition(values));
 
         // Operateurs arithmetiques a un operande: 1/x, x^2, Sqrt
-        addOperatorButton("1/x", 4, 2, Color.RED, new Reversion());
-        addOperatorButton("x^2", 4, 3, Color.RED, new Square());
-        addOperatorButton("Sqrt", 4, 4, Color.RED, new SquareRoot());
+        addOperatorButton("1/x", 4, 2, Color.RED, new Reversion(values));
+        addOperatorButton("x^2", 4, 3, Color.RED, new Square(values));
+        addOperatorButton("Sqrt", 4, 4, Color.RED, new SquareRoot(values));
 
         //----------------- Fin aritmetic -----------------------------------------
         // Affichage de la pile
