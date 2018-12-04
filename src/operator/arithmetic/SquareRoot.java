@@ -1,14 +1,13 @@
 package operator.arithmetic;
 
+import java.util.Stack;
 import operator.Operator;
 
-import java.util.Stack;
+public class SquareRoot extends Operator{
 
-public class SquareRoot extends Operator {
-   public SquareRoot(Stack<Double> values) {
-      super(values);
-   }
-
+    public SquareRoot(Stack<Double> values) {
+        super(values);
+    }
    @Override
    public void execute() {
 

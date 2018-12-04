@@ -4,11 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import operator.*;
-import java.util.Stack;
+import operator.number.*;
 
 public class JCalculator extends JFrame {
     // Tableau representant une pile vide
-
     private final String[] empty = {"< empty stack >"};
 
     // Zone de texte contenant la valeur introduite ou resultat courant
@@ -19,10 +18,7 @@ public class JCalculator extends JFrame {
 
     // Contraintes pour le placement des composants graphiques
     private final GridBagConstraints constraints = new GridBagConstraints();
-
-    private Stack<Double> stack = new Stack<Double>();
     
-
     /*
      * Mise a jour de l'interface apres une operation (jList et jStack)
      */
@@ -33,8 +29,8 @@ public class JCalculator extends JFrame {
     }
 
     /*
-   * Ajout d'un bouton dans l'interface et de l'operation associee,
-   * instance de la classe Operation, possedeant une methode execute()
+     * Ajout d'un bouton dans l'interface et de l'operation associee,
+     * instance de la classe Operation, possedeant une methode execute()
      */
     private void addOperatorButton(String name, int x, int y, Color color,
             final Operator operator) {
@@ -74,7 +70,7 @@ public class JCalculator extends JFrame {
         getContentPane().add(jNumber, constraints);
         constraints.gridwidth = 1; // reset width
 
-        //---------------- memory -------------------------------------------------
+        //---------------- memory ------------------------------------------------
         // Rappel de la valeur en memoire
         addOperatorButton("MR", 0, 1, Color.RED, null);
 
@@ -93,36 +89,39 @@ public class JCalculator extends JFrame {
         // Entree: met la valeur courante sur le sommet de la pile
         addOperatorButton("Ent", 4, 5, Color.RED, null);
 
-        //---------------- Fin memory ---------------------------------------------
+        //---------------- Fin memory --------------------------------------------
+        
         //---------------- number ------------------------------------------------
         // Boutons 1-9
         for (int i = 1; i < 10; i++) {
             addOperatorButton(String.valueOf(i), (i - 1) % 3, 4 - (i - 1) / 3,
-                    Color.BLUE, null);
+                    Color.BLUE, new AddNumber(jNumber, String.valueOf(i)));
         }
         // Bouton 0
-        addOperatorButton("0", 0, 5, Color.BLUE, null);
+        addOperatorButton("0", 0, 5, Color.BLUE, new AddNumber(jNumber, "0"));
 
         // Changement de signe de la valeur courante
-        addOperatorButton("+/-", 1, 5, Color.BLUE, null);
+        addOperatorButton("+/-", 1, 5, Color.BLUE, new ChangeSign(jNumber));
 
         // Operateur point (chiffres apres la virgule ensuite)
-        addOperatorButton(".", 2, 5, Color.BLUE, null);
+        addOperatorButton(".", 2, 5, Color.BLUE, new Dote(jNumber, "."));
 
         //----------------- Fin number -------------------------------------------
+        
         //----------------- aritmetic --------------------------------------------
         // Operateurs arithmetiques a deux operandes: /, *, -, +
-        addOperatorButton("/", 3, 2, Color.RED, new Division());
-        addOperatorButton("*", 3, 3, Color.RED, new Multiplication());
-        addOperatorButton("-", 3, 4, Color.RED, new Substraction());
-        addOperatorButton("+", 3, 5, Color.RED, new Addition());
+        addOperatorButton("/", 3, 2, Color.RED, null);
+        addOperatorButton("*", 3, 3, Color.RED, null);
+        addOperatorButton("-", 3, 4, Color.RED, null);
+        addOperatorButton("+", 3, 5, Color.RED, null);
 
         // Operateurs arithmetiques a un operande: 1/x, x^2, Sqrt
-        addOperatorButton("1/x", 4, 2, Color.RED, new Reversion());
-        addOperatorButton("x^2", 4, 3, Color.RED, new Square());
-        addOperatorButton("Sqrt", 4, 4, Color.RED, new SquareRoot());
+        addOperatorButton("1/x", 4, 2, Color.RED, null);
+        addOperatorButton("x^2", 4, 3, Color.RED, null);
+        addOperatorButton("Sqrt", 4, 4, Color.RED, null);
 
         //----------------- Fin aritmetic -----------------------------------------
+        
         // Affichage de la pile
         JLabel jLabel = new JLabel("Stack");
         jLabel.setFont(new Font("Dialog", 0, 12));
@@ -145,7 +144,7 @@ public class JCalculator extends JFrame {
     }
 
     /*
-   * main()
+     * main()
      */
     public static void main(String args[]) {
         new JCalculator().setVisible(true);

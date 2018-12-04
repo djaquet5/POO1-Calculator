@@ -1,13 +1,24 @@
 package operator;
-
 import java.util.Stack;
+import javax.swing.JTextField;
 
 public abstract class Operator {
-   private Stack<Double> values;
-
-   public Operator(Stack<Double> values){
-      this.values = values;
-   }
-
-   public abstract void execute();
+    private JTextField jNumber;
+    
+    public Operator(JTextField jNumber){
+        this.jNumber = jNumber;
+    }
+    
+    public Operator(Stack<Double> values){
+        
+    }
+    
+    public abstract void execute();
+    public void setJNumber(String val){
+        jNumber.setText(val);
+    }
+    
+    public String getJNumber(){
+        return jNumber.getText();
+    }
 }
