@@ -12,6 +12,7 @@
  */
 package operator.number;
 
+import State.State;
 import javax.swing.JTextField;
 import operator.Operator;
 
@@ -20,11 +21,9 @@ import operator.Operator;
  * 
  */
 public class AddNumber extends Operator {
-    
-    private String val;
-    
-    public AddNumber(JTextField jNumber, String val) {
-        super(jNumber);
+    String val;
+    public AddNumber(State state, String val){
+        super(state);
         this.val = val;
     }
     
@@ -33,12 +32,11 @@ public class AddNumber extends Operator {
      */
     @Override
     public void execute() {
-
-        if (!super.getJNumber().equals("0")) {
-            super.setJNumber(super.getJNumber() + val);
-        } else {
-            super.setJNumber(val);
-        }
         
+        if(getState().getCurrentDisplay().equals("0")){
+            getState().setCurrentDisplay(val);
+        } else {
+            getState().setCurrentDisplay(getState().getCurrentDisplay()+val);
+        }
     }
 }

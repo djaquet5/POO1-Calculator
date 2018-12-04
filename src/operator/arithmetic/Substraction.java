@@ -1,12 +1,13 @@
 package operator.arithmetic;
 
+import State.State;
 import java.util.Stack;
 import operator.Operator;
 
 public class Substraction extends Operator {
 
-    public Substraction(Stack<Double> values) {
-        super(values);
+    public Substraction(State state) {
+        super(state);
     }
    
    @Override

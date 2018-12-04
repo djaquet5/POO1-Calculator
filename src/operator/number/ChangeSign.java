@@ -13,6 +13,7 @@
 
 package operator.number;
 
+import State.State;
 import javax.swing.JTextField;
 import operator.Operator;
 
@@ -21,8 +22,8 @@ import operator.Operator;
  */
 public class ChangeSign extends Operator {
 
-    public ChangeSign(JTextField jNumber) {
-        super(jNumber);
+    public ChangeSign(State state) {
+        super(state);
     }
     
     /**
@@ -30,11 +31,11 @@ public class ChangeSign extends Operator {
      */
     @Override
     public void execute() {
-        if(!super.getJNumber().equals("0")){
-            if (!super.getJNumber().contains("-")) {
-                super.setJNumber("-" + super.getJNumber());
+        if(!getState().getCurrentDisplay().equals("0")){
+            if(getState().getCurrentDisplay().contains("-")){
+                getState().setCurrentDisplay(getState().getCurrentDisplay().replace("-", ""));
             } else {
-                super.setJNumber(super.getJNumber().replace("-", ""));
+                getState().setCurrentDisplay("-" + getState().getCurrentDisplay());
             }
         }
     }

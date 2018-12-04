@@ -1,9 +1,11 @@
 
+import State.State;
 import operator.arithmetic.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import operator.*;
+import operator.memory.*;
 import operator.number.*;
 
 public class JCalculator extends JFrame {
@@ -19,12 +21,16 @@ public class JCalculator extends JFrame {
     // Contraintes pour le placement des composants graphiques
     private final GridBagConstraints constraints = new GridBagConstraints();
     
+    private State state = new State();
+    
     /*
      * Mise a jour de l'interface apres une operation (jList et jStack)
      */
     private void update() {
         // Modifier une zone de texte, JTextField.setText(string nom)
         // Modifier un composant liste, JList.setListData(Object[] tableau)
+        jNumber.setText(state.getCurrentDisplay());
+        
 
     }
 
@@ -95,16 +101,16 @@ public class JCalculator extends JFrame {
         // Boutons 1-9
         for (int i = 1; i < 10; i++) {
             addOperatorButton(String.valueOf(i), (i - 1) % 3, 4 - (i - 1) / 3,
-                    Color.BLUE, new AddNumber(jNumber, String.valueOf(i)));
+                    Color.BLUE, new AddNumber(state, String.valueOf(i)));
         }
         // Bouton 0
-        addOperatorButton("0", 0, 5, Color.BLUE, new AddNumber(jNumber, "0"));
+        addOperatorButton("0", 0, 5, Color.BLUE, new AddNumber(state, "0"));
 
         // Changement de signe de la valeur courante
-        addOperatorButton("+/-", 1, 5, Color.BLUE, new ChangeSign(jNumber));
+        addOperatorButton("+/-", 1, 5, Color.BLUE, new ChangeSign(state));
 
         // Operateur point (chiffres apres la virgule ensuite)
-        addOperatorButton(".", 2, 5, Color.BLUE, new Dot(jNumber));
+        addOperatorButton(".", 2, 5, Color.BLUE, new Dot(state));
 
         //----------------- Fin number -------------------------------------------
         

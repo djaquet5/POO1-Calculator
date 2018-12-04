@@ -12,6 +12,7 @@
  */
 
 package operator.number;
+import State.State;
 import javax.swing.JTextField;
 import operator.Operator;
 
@@ -21,16 +22,14 @@ import operator.Operator;
  */
 public class Dot extends Operator{
 
-    public Dot(JTextField jNumber) {
-        super(jNumber);
+    public Dot(State state) {
+        super(state);
     }
 
     @Override
     public void execute() {
-        if(!super.getJNumber().contains("."))
-            super.setJNumber(super.getJNumber() + ".");
+        if(!getState().getCurrentDisplay().contains("."))
+            getState().setCurrentDisplay(getState().getCurrentDisplay()+".");
+                
     }
-    
-    
-    
 }
