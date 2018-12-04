@@ -18,6 +18,7 @@ public class JCalculator extends JFrame {
 
     // Contraintes pour le placement des composants graphiques
     private final GridBagConstraints constraints = new GridBagConstraints();
+
     
     /*
      * Mise a jour de l'interface apres une operation (jList et jStack)
@@ -119,6 +120,7 @@ public class JCalculator extends JFrame {
         addOperatorButton("1/x", 4, 2, Color.RED, null);
         addOperatorButton("x^2", 4, 3, Color.RED, null);
         addOperatorButton("Sqrt", 4, 4, Color.RED, null);
+
 
         //----------------- Fin aritmetic -----------------------------------------
         
