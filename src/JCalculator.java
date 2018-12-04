@@ -18,7 +18,6 @@ public class JCalculator extends JFrame {
 
     // Contraintes pour le placement des composants graphiques
     private final GridBagConstraints constraints = new GridBagConstraints();
-
     
     /*
      * Mise a jour de l'interface apres une operation (jList et jStack)
@@ -105,7 +104,7 @@ public class JCalculator extends JFrame {
         addOperatorButton("+/-", 1, 5, Color.BLUE, new ChangeSign(jNumber));
 
         // Operateur point (chiffres apres la virgule ensuite)
-        addOperatorButton(".", 2, 5, Color.BLUE, new Dote(jNumber, "."));
+        addOperatorButton(".", 2, 5, Color.BLUE, new Dot(jNumber));
 
         //----------------- Fin number -------------------------------------------
         
@@ -120,7 +119,6 @@ public class JCalculator extends JFrame {
         addOperatorButton("1/x", 4, 2, Color.RED, null);
         addOperatorButton("x^2", 4, 3, Color.RED, null);
         addOperatorButton("Sqrt", 4, 4, Color.RED, null);
-
 
         //----------------- Fin aritmetic -----------------------------------------
         
