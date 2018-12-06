@@ -1,30 +1,31 @@
 /*
  -----------------------------------------------------------------------------------
  Laboratoire : Labo08
- Fichier     : Enter.java
+ Fichier     : BackSpace.java
  Auteur(s)   : Bouyiatiotis - jaquet
  Date        : 04.12.2018
 
- Remarque(s) :
+ Remarque(s) : 
 
  Compilateur : MinGW-g++ <x.y.z>
  -----------------------------------------------------------------------------------
  */
 package operator.memory;
 import State.State;
-import operator.Operator;
+import operator.*;
 
-public class Enter extends Operator{
+public class BackSpace extends Operator{
 
-    public Enter(State state) {
+    public BackSpace(State state) {
         super(state);
     }
-
+    
     @Override
     public void execute() {
-        Double val = Double.parseDouble(super.getState().getCurrentDisplay());
-        super.getState().addValue(val);
-        super.getState().setCurrentDisplay("0");
+        if(super.getState().getCurrentDisplay().compareTo("") != 0){
+            String str = super.getState().getCurrentDisplay();
+            super.getState().setCurrentDisplay(str.substring(0, str.length()-1));
+        }
     }
     
 }

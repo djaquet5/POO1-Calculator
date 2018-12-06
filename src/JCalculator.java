@@ -1,4 +1,15 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Labo08
+ Fichier     : JCalculator.java
+ Auteur(s)   : Bouyiatiotis - jaquet
+ Date        : 04.12.2018
 
+ Remarque(s) : 
+
+ Compilateur : MinGW-g++ <x.y.z>
+ -----------------------------------------------------------------------------------
+ */
 import State.State;
 import operator.arithmetic.*;
 import javax.swing.*;
@@ -29,8 +40,16 @@ public class JCalculator extends JFrame {
     private void update() {
         // Modifier une zone de texte, JTextField.setText(string nom)
         // Modifier un composant liste, JList.setListData(Object[] tableau)
-        jNumber.setText(state.getCurrentDisplay());
         
+        if(state.getCurrentDisplay().compareTo("") != 0)
+            jNumber.setText(state.getCurrentDisplay());
+        else 
+            jNumber.setText("0");
+        
+        if(!state.empty())
+            jStack.setListData(state.toTab());
+        else
+            jStack.setListData(empty);
 
     }
 
@@ -84,7 +103,7 @@ public class JCalculator extends JFrame {
         addOperatorButton("MS", 1, 1, Color.RED, null);
 
         // Backspace
-        addOperatorButton("<=", 2, 1, Color.RED, null);
+        addOperatorButton("<=", 2, 1, Color.RED, new BackSpace(state));
 
         // Mise a zero de la valeur courante + suppression des erreurs
         addOperatorButton("CE", 3, 1, Color.RED, null);
@@ -93,7 +112,7 @@ public class JCalculator extends JFrame {
         addOperatorButton("C", 4, 1, Color.RED, null);
 
         // Entree: met la valeur courante sur le sommet de la pile
-        addOperatorButton("Ent", 4, 5, Color.RED, null);
+        addOperatorButton("Ent", 4, 5, Color.RED, new Enter(state));
 
         //---------------- Fin memory --------------------------------------------
         
