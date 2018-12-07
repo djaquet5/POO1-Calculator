@@ -22,9 +22,9 @@ public class Enter extends Operator{
 
     @Override
     public void execute() {
-        Double val = Double.parseDouble(super.getState().getCurrentDisplay());
-        super.getState().addValue(val);
-        super.getState().setCurrentDisplay("0");
+        Double val = Double.parseDouble(getState().getCurrentDisplay());
+        getState().addValue(val);
+        getState().setCurrentDisplay("0");
     }
     
 }

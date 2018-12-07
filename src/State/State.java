@@ -15,10 +15,11 @@ package State;
 import java.util.Stack;
 
 public class State {
-    private Stack<Double> values = new Stack<Double>();
+    private Stack<Double> values = new Stack<>();
     private String currentDisplay = "0";
-    private Double memory;
-    
+    private String memory;
+    private boolean error = false;
+
     /**
      * @brief   : Permet de récupérer ce qui se toruve dans currentDisplay
      * @return  : String du currentDisplay
@@ -49,13 +50,15 @@ public class State {
      * @brief   : Convertie la pile en un tableau d'Object
      * @return  : Object[] des éléments contenue dans la pile
      */
-    public Object[] toTab(){
-        Object[] tab = new Object[values.capacity()];
+    public Double[] toTab(){
+        Double[] tab = new Double[values.capacity()];
         int i = 0;
+
         for(Double o : values){
-            tab[i] = (Object)o;
+            tab[i] = o;
             ++i;
         }
+
         return tab;
     }
     
@@ -67,5 +70,17 @@ public class State {
      */
     public boolean empty(){
         return values.empty();
+    }
+
+    public Double pop(){
+        return values.pop();
+    }
+
+    public void push(double value){
+        values.push(value);
+    }
+
+    public boolean isError(){
+        return error;
     }
 }

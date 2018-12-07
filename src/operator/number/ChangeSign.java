@@ -32,11 +32,10 @@ public class ChangeSign extends Operator {
     @Override
     public void execute() {
         if(!getState().getCurrentDisplay().equals("0")){
-            if(getState().getCurrentDisplay().contains("-")){
+            if(getState().getCurrentDisplay().contains("-"))
                 getState().setCurrentDisplay(getState().getCurrentDisplay().replace("-", ""));
-            } else {
+            else
                 getState().setCurrentDisplay("-" + getState().getCurrentDisplay());
-            }
         }
     }
 

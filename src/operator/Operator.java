@@ -42,4 +42,7 @@ public abstract class Operator {
         return state;
     }
 
+    public boolean isOperationDoable(){
+        return !state.isError();
+    }
 }

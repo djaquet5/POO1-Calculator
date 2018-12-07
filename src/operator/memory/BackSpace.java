@@ -22,9 +22,9 @@ public class BackSpace extends Operator{
     
     @Override
     public void execute() {
-        if(super.getState().getCurrentDisplay().compareTo("") != 0){
-            String str = super.getState().getCurrentDisplay();
-            super.getState().setCurrentDisplay(str.substring(0, str.length()-1));
+        if(getState().getCurrentDisplay().compareTo("") != 0){
+            String str = getState().getCurrentDisplay();
+            getState().setCurrentDisplay(str.substring(0, str.length()-1));
         }
     }
     
