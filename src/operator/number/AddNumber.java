@@ -32,9 +32,12 @@ public class AddNumber extends Operator {
      */
     @Override
     public void execute() {
-        if(getState().getCurrentDisplay().equals("0"))
-            getState().setCurrentDisplay(val);
-        else
-            getState().setCurrentDisplay(getState().getCurrentDisplay()+val);
+        State state = getState();
+        if(state.getCurrentDisplay().equals("0") || state.isRemoveOldDisplay()) {
+            state.setCurrentDisplay(val);
+            state.setRemoveOldDisplay(false);
+        } else {
+            state.setCurrentDisplay(state.getCurrentDisplay() + val);
+        }
     }
 }

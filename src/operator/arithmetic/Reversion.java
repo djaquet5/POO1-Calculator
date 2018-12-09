@@ -12,13 +12,17 @@ public class Reversion extends UnaryOperator {
 
    @Override
    public void execute() {
-      if(!isOperationDoable())
-         throw new RuntimeException("Impossible d'obtenir l'inverse");
-
       State state = getState();
+
+      if(!isOperationDoable()) {
+         state.setError(true, "Impossible d'obtenir l'inverse");
+         return;
+      }
+
       double result = 1 / Double.parseDouble(state.getCurrentDisplay());
 
-      state.push(result);
+
+      state.setRemoveOldDisplay(true);
    }
 
    @Override

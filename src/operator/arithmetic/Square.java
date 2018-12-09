@@ -12,13 +12,17 @@ public class Square extends UnaryOperator {
 
    @Override
    public void execute() {
-      if(!isOperationDoable())
-         throw new RuntimeException("Impossible d'obtenir le carré");
-
       State state = getState();
+
+      if(!isOperationDoable()) {
+         state.setError(true, "Impossible d'obtenir le carré");
+         return;
+      }
+
       double value = Double.parseDouble(state.getCurrentDisplay());
       double result = value * value;
 
-      state.push(result);
+      state.addValue(result);
+      state.setRemoveOldDisplay(true);
    }
 }

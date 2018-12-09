@@ -46,7 +46,7 @@ public class JCalculator extends JFrame {
         else 
             jNumber.setText("0");
         
-        if(!state.empty())
+        if(!state.isEmpty())
             jStack.setListData(state.toTab());
         else
             jStack.setListData(empty);
@@ -97,19 +97,19 @@ public class JCalculator extends JFrame {
 
         //---------------- memory ------------------------------------------------
         // Rappel de la valeur en memoire
-        addOperatorButton("MR", 0, 1, Color.RED, null);
+        addOperatorButton("MR", 0, 1, Color.RED, new MemoryRecall(state));
 
         // Stockage d'une valeur en memoire
-        addOperatorButton("MS", 1, 1, Color.RED, null);
+        addOperatorButton("MS", 1, 1, Color.RED, new MemoryStore(state));
 
         // Backspace
         addOperatorButton("<=", 2, 1, Color.RED, new BackSpace(state));
 
         // Mise a zero de la valeur courante + suppression des erreurs
-        addOperatorButton("CE", 3, 1, Color.RED, null);
+        addOperatorButton("CE", 3, 1, Color.RED, new ClearError(state));
 
         // Comme CE + vide la pile
-        addOperatorButton("C", 4, 1, Color.RED, null);
+        addOperatorButton("C", 4, 1, Color.RED, new Clear(state));
 
         // Entree: met la valeur courante sur le sommet de la pile
         addOperatorButton("Ent", 4, 5, Color.RED, new Enter(state));

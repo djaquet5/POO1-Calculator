@@ -1,7 +1,5 @@
 package operator.arithmetic;
 import State.State;
-import java.util.Stack;
-import operator.Operator;
 
 public class Division extends BinaryOperator {
 
@@ -12,13 +10,17 @@ public class Division extends BinaryOperator {
 
    @Override
    public void execute() {
-      if(!isOperationDoable())
-         throw new RuntimeException("Impossible de faire la division");
-
       State state = getState();
-      double result = state.pop() / Double.parseDouble(state.getCurrentDisplay());
 
-      state.push(result);
+      if(!isOperationDoable()) {
+         state.setError(true, "Impossible de faire la division");
+         return;
+      }
+
+      double result = state.removeValue() / Double.parseDouble(state.getCurrentDisplay());
+
+      state.addValue(result);
+      state.setRemoveOldDisplay(true);
    }
 
    @Override

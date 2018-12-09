@@ -11,6 +11,6 @@ public abstract class BinaryOperator extends Operator {
 
    @Override
    public boolean isOperationDoable() {
-      return super.isOperationDoable() && !getState().empty();
+      return super.isOperationDoable() && !getState().isEmpty();
    }
 }

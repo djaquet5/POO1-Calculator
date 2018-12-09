@@ -30,6 +30,5 @@ public class Dot extends Operator{
     public void execute() {
         if(!getState().getCurrentDisplay().contains("."))
             getState().setCurrentDisplay(getState().getCurrentDisplay()+".");
-                
     }
 }

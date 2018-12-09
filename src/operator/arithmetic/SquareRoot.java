@@ -12,12 +12,16 @@ public class SquareRoot extends UnaryOperator{
 
    @Override
    public void execute() {
-      if(!isOperationDoable())
-         throw new RuntimeException("Impossible d'obtenir la racine");
-
       State state = getState();
+
+      if(!isOperationDoable()) {
+         state.setError(true, "Impossible d'obtenir la racine");
+         return;
+      }
+
       double result = Math.sqrt(Double.parseDouble(state.getCurrentDisplay()));
 
-      state.push(result);
+      state.addValue(result);
+      state.setRemoveOldDisplay(true);
    }
 }

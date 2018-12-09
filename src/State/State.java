@@ -19,6 +19,7 @@ public class State {
     private String currentDisplay = "0";
     private String memory;
     private boolean error = false;
+    private boolean removeOldDisplay = false;
 
     /**
      * @brief   : Permet de récupérer ce qui se toruve dans currentDisplay
@@ -27,7 +28,7 @@ public class State {
     public String getCurrentDisplay(){
         return currentDisplay;
     }
-    
+
     /**
      * @brief       : Permet de changer la valeur contenue dans current
      *                display
@@ -42,8 +43,12 @@ public class State {
      * @param val   : Double de la valeur à ajouter dans la pile
      */
     public void addValue(Double val){
-        values.add(0, val);
+        values.push(val);
         setCurrentDisplay(val.toString());
+    }
+
+    public Double removeValue(){
+        return values.pop();
     }
     
     /**
@@ -51,13 +56,12 @@ public class State {
      * @return  : Object[] des éléments contenue dans la pile
      */
     public Double[] toTab(){
-        Double[] tab = new Double[values.capacity()];
-        int i = 0;
+        int size = values.size();
+        int i = size - 1;
+        Double[] tab = new Double[size];
 
-        for(Double o : values){
-            tab[i] = o;
-            ++i;
-        }
+        for(Double o : values)
+            tab[i--] = o;
 
         return tab;
     }
@@ -68,19 +72,41 @@ public class State {
      *            True : Pile vide
      *            False: Pile non vide
      */
-    public boolean empty(){
+    public boolean isEmpty(){
         return values.empty();
     }
 
-    public Double pop(){
-        return values.pop();
-    }
-
-    public void push(double value){
-        values.push(value);
+    public void clearValues() {
+        while(!values.empty())
+            values.pop();
     }
 
     public boolean isError(){
         return error;
+    }
+
+    public void setError(boolean error) {
+        this.error = error;
+    }
+
+    public void setError(boolean error, String message){
+        setError(error);
+        setCurrentDisplay(message);
+    }
+
+    public String getMemory() {
+        return memory;
+    }
+
+    public void setMemory(String memory) {
+        this.memory = memory;
+    }
+
+    public boolean isRemoveOldDisplay() {
+        return removeOldDisplay;
+    }
+
+    public void setRemoveOldDisplay(boolean removeOldDisplay) {
+        this.removeOldDisplay = removeOldDisplay;
     }
 }
