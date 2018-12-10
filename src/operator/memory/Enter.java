@@ -24,6 +24,11 @@ public class Enter extends Operator{
     public void execute() {
         State state = getState();
 
+        if(!isOperationDoable()){
+            state.setError(true, "Impossible d'ajouter un nombre");
+            return;
+        }
+
         Double val = Double.parseDouble(state.getCurrentDisplay());
         state.addValue(val);
         state.setCurrentDisplay("0");

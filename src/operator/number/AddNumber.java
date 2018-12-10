@@ -33,6 +33,11 @@ public class AddNumber extends Operator {
     public void execute() {
         State state = getState();
 
+        if(!isOperationDoable()){
+            state.setError(true, "Impossible de changer la valeur");
+            return;
+        }
+
         if(state.isRemoveOldDisplay()){
             state.addValue(Double.parseDouble(state.getCurrentDisplay()));
             state.setRemoveOldDisplay(false);
