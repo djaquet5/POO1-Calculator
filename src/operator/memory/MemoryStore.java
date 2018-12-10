@@ -14,10 +14,12 @@ public class MemoryStore extends Operator {
 
    @Override
    public void execute() {
-      if(!isOperationDoable())
-         throw new RuntimeException("Impossible de mettre la valeur en mémoire");
-
       State state = getState();
+
+      if(!isOperationDoable()) {
+         state.setError(true, "Impossible de mettre la valeur en mémoire");
+         return;
+      }
 
       state.setMemory(state.getCurrentDisplay());
    }

@@ -20,9 +20,8 @@ public class Square extends UnaryOperator {
       }
 
       double value = Double.parseDouble(state.getCurrentDisplay());
-      double result = value * value;
 
-      state.addValue(result);
+      state.setCurrentDisplay(String.valueOf(value * value));
       state.setRemoveOldDisplay(true);
    }
 }

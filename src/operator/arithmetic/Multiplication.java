@@ -18,9 +18,9 @@ public class Multiplication extends BinaryOperator {
          return;
       }
 
-      double result = state.removeValue() * Double.parseDouble(state.getCurrentDisplay());
+      Double result = state.removeValue() * Double.parseDouble(state.getCurrentDisplay());
 
-      state.addValue(result);
+      state.setCurrentDisplay(result.toString());
       state.setRemoveOldDisplay(true);
    }
 }

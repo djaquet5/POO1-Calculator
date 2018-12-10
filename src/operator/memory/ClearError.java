@@ -14,7 +14,10 @@ public class ClearError extends Operator {
 
    @Override
    public void execute() {
-      getState().setCurrentDisplay("0");
-      getState().setError(false);
+      State state = getState();
+
+      state.setCurrentDisplay("0");
+      state.setError(false);
+      state.setRemoveOldDisplay(false);
    }
 }

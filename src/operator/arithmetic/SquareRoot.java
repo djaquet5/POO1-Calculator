@@ -19,9 +19,9 @@ public class SquareRoot extends UnaryOperator{
          return;
       }
 
-      double result = Math.sqrt(Double.parseDouble(state.getCurrentDisplay()));
+      Double result = Math.sqrt(Double.parseDouble(state.getCurrentDisplay()));
 
-      state.addValue(result);
+      state.setCurrentDisplay(result.toString());
       state.setRemoveOldDisplay(true);
    }
 }

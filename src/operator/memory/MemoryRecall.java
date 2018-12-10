@@ -14,10 +14,13 @@ public class MemoryRecall extends Operator {
 
    @Override
    public void execute() {
-      if(!isOperationDoable())
-         throw new RuntimeException("La mémoire est vide");
-
       State state = getState();
+
+      if(!isOperationDoable()) {
+         state.setError(true, "La mémoire est vide");
+         return;
+      }
+
       state.setCurrentDisplay(state.getMemory());
    }
 

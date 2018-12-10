@@ -28,7 +28,9 @@ public class Dot extends Operator{
 
     @Override
     public void execute() {
-        if(!getState().getCurrentDisplay().contains("."))
-            getState().setCurrentDisplay(getState().getCurrentDisplay()+".");
+        State state = getState();
+
+        if(!state.getCurrentDisplay().contains("."))
+            state.setCurrentDisplay(state.getCurrentDisplay()+".");
     }
 }

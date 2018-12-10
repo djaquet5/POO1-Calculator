@@ -19,9 +19,9 @@ public class Reversion extends UnaryOperator {
          return;
       }
 
-      double result = 1 / Double.parseDouble(state.getCurrentDisplay());
+      Double result = 1 / Double.parseDouble(state.getCurrentDisplay());
 
-
+      state.setCurrentDisplay(result.toString());
       state.setRemoveOldDisplay(true);
    }
 
