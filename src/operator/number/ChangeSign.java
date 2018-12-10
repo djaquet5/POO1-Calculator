@@ -13,8 +13,7 @@
 
 package operator.number;
 
-import State.State;
-import javax.swing.JTextField;
+import state.State;
 import operator.Operator;
 
 /**

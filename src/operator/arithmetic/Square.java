@@ -1,8 +1,6 @@
 package operator.arithmetic;
 
-import State.State;
-import java.util.Stack;
-import operator.Operator;
+import state.State;
 
 public class Square extends UnaryOperator {
 

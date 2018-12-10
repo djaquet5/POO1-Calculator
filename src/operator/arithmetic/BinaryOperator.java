@@ -1,6 +1,6 @@
 package operator.arithmetic;
 
-import State.State;
+import state.State;
 import operator.Operator;
 
 public abstract class BinaryOperator extends Operator {

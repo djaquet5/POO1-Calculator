@@ -1,10 +1,10 @@
 package operator.memory;
 
-import State.State;
+import state.State;
 
 public class Clear extends ClearError {
    /**
-    * @param state : State don on fait référence pour les opérations
+    * @param state : state don on fait référence pour les opérations
     * @brief : Constructeur de la classe Operator
     */
    public Clear(State state) {

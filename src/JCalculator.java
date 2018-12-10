@@ -10,7 +10,7 @@
  Compilateur : MinGW-g++ <x.y.z>
  -----------------------------------------------------------------------------------
  */
-import State.State;
+import state.State;
 import operator.arithmetic.*;
 import javax.swing.*;
 import java.awt.*;

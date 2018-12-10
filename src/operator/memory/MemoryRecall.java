@@ -1,11 +1,11 @@
 package operator.memory;
 
-import State.State;
+import state.State;
 import operator.Operator;
 
 public class MemoryRecall extends Operator {
    /**
-    * @param state : State don on fait référence pour les opérations
+    * @param state : state don on fait référence pour les opérations
     * @brief : Constructeur de la classe Operator
     */
    public MemoryRecall(State state) {

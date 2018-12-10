@@ -12,17 +12,14 @@
  */
 
 package operator;
-import State.State;
-import java.util.Stack;
-import javax.swing.JTextField;
-import State.*;
+import state.State;
 
 public abstract class Operator {
     private State state;
     
     /**
      * @brief       : Constructeur de la classe Operator
-     * @param state : State don on fait référence pour les opérations
+     * @param state : state don on fait référence pour les opérations
      */
     public Operator(State state){
         this.state = state;
@@ -36,7 +33,7 @@ public abstract class Operator {
     
     /**
      * @brief   : Permet de récupérer state
-     * @return  : State de l'attribue state de Operator
+     * @return  : state de l'attribue state de Operator
      */
     public State getState(){
         return state;

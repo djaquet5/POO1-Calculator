@@ -1,5 +1,5 @@
 package operator.arithmetic;
-import State.State;
+import state.State;
 
 public class Addition extends  BinaryOperator{
    public Addition(State state) {

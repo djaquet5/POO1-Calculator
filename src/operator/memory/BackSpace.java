@@ -11,7 +11,7 @@
  -----------------------------------------------------------------------------------
  */
 package operator.memory;
-import State.State;
+import state.State;
 import operator.*;
 
 public class BackSpace extends Operator{
