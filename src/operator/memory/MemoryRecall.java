@@ -17,7 +17,7 @@ public class MemoryRecall extends Operator {
       State state = getState();
 
       if(!isOperationDoable()) {
-         state.setError(true, "La mémoire est vide");
+         state.setError(true, "Impossible de charger la mémoire");
          return;
       }
 
@@ -26,6 +26,6 @@ public class MemoryRecall extends Operator {
 
    @Override
    public boolean isOperationDoable() {
-      return getState().getMemory() != null;
+      return super.isOperationDoable() && getState().getMemory() != null;
    }
 }
