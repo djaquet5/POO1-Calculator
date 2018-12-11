@@ -11,15 +11,15 @@ public class SquareRoot extends UnaryOperator{
    @Override
    public void execute() {
       State state = getState();
-
-      if(!isOperationDoable()) {
+      Double value = Double.parseDouble(state.getCurrentDisplay());
+      
+      if(!isOperationDoable() || !Double.isNaN(value)) {
          state.setError(true, "Impossible d'obtenir la racine");
          return;
       }
-
-      Double result = Math.sqrt(Double.parseDouble(state.getCurrentDisplay()));
-
-      state.setCurrentDisplay(result.toString());
+      
+      value = Math.sqrt(value);
+      state.setCurrentDisplay(value.toString());
       state.setRemoveOldDisplay(true);
    }
 }

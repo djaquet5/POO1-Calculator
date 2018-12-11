@@ -22,6 +22,7 @@ public class MemoryRecall extends Operator {
       }
 
       state.setCurrentDisplay(state.getMemory());
+      state.setRemoveOldDisplay(true);
    }
 
    @Override
