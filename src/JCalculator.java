@@ -10,14 +10,15 @@
  Compilateur : MinGW-g++ <x.y.z>
  -----------------------------------------------------------------------------------
  */
-import state.State;
-import operator.arithmetic.*;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import operator.*;
 import operator.memory.*;
 import operator.number.*;
+import operator.arithmetic.*;
+import state.State;
 
 public class JCalculator extends JFrame {
     // Tableau representant une pile vide
