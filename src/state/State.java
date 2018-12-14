@@ -77,8 +77,7 @@ public class State {
     }
 
     public void clearValues() {
-        while(!values.empty())
-            values.pop();
+        values.clear();
     }
 
     public boolean isError(){
