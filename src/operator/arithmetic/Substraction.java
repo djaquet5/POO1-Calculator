@@ -19,7 +19,7 @@ public class Substraction extends BinaryOperator {
 
       Double result = state.removeValue() - Double.parseDouble(state.getCurrentDisplay());
 
-      state.setCurrentDisplay(result.toString());
+      state.setCurrentDisplay(String.valueOf(result));
       state.setRemoveOldDisplay(true);
    }
 }

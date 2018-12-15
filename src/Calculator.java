@@ -1,15 +1,18 @@
-import java.util.*;
+   import java.util.*;
+
+import operator.number.AddNumber;
 import state.State;
 import operator.*;
 import operator.memory.*;
 import operator.arithmetic.*;
 
 public class Calculator {
-    private State state = new State();
-    private Map<String, Operator> operation;
+   private State state = new State();
+   private Map<String, Operator> operation;
 
-    public Calculator(){
+   public Calculator(){
         this.operation = new HashMap<>();
+
         // Arithmétique
         operation.put("+", new Addition(state));
         operation.put("-", new Substraction(state));
@@ -56,20 +59,23 @@ public class Calculator {
    }
 
    private void makeOperation(String input){
-      operation.get(input).execute();
+      if(state.isError() && !input.equals("CE") && !input.equals("C"))
+         return;
 
-      if(!state.isError() || input.equals("CE"))
-         state.addValue(Double.parseDouble(state.getCurrentDisplay()));
+      operation.get(input).execute();
    }
 
    private void addValues(String input){
       try {
          Double number = Double.parseDouble(input);
 
-         if(!state.isRemoveOldDisplay())
-            state.addValue(Double.parseDouble(state.getCurrentDisplay()));
+         if(!state.getCurrentDisplay().equals("0")){
+            Enter enter = new Enter(state);
+            enter.execute();
+         }
 
-         state.setCurrentDisplay(input);
+         AddNumber addNumber = new AddNumber(state, input);
+         addNumber.execute();
 
       } catch(NumberFormatException e) {
          state.setError(true, "Impossible d'utiliser cette valeur.");
@@ -79,14 +85,19 @@ public class Calculator {
    private void displayError(){
       if(state.isError()){
          System.out.println(state.getCurrentDisplay());
-         System.out.println("Entrer 'CE' pour continuer à utiliser le programme.");
+         System.out.println("Entrer 'CE' ou 'C' pour continuer à utiliser le programme.");
       }
    }
 
    private void displayStack(){
-      Double[] values = state.toTab();
+      if(state.isEmpty() && state.getCurrentDisplay().equals("0")) {
+         System.out.println("< empty stack >\n");
+         return;
+      }
 
       System.out.print(Double.parseDouble(state.getCurrentDisplay()) + " ");
+
+      Double[] values = state.toTab();
 
       for(Double value : values)
          System.out.print(value + " ");

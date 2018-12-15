@@ -44,7 +44,7 @@ public class State {
      */
     public void addValue(Double val){
         values.push(val);
-        setCurrentDisplay(val.toString());
+        setCurrentDisplay(String.valueOf(val));
     }
 
     public Double removeValue(){

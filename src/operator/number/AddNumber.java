@@ -20,10 +20,11 @@ import operator.Operator;
  *
  */
 public class AddNumber extends Operator {
-    String val;
-    public AddNumber(State state, String val){
+    private String value;
+
+    public AddNumber(State state, String value){
         super(state);
-        this.val = val;
+        this.value = value;
     }
 
     /**
@@ -41,11 +42,11 @@ public class AddNumber extends Operator {
         if(state.isRemoveOldDisplay()){
             state.addValue(Double.parseDouble(state.getCurrentDisplay()));
             state.setRemoveOldDisplay(false);
-            state.setCurrentDisplay(val);
+            state.setCurrentDisplay(value);
         } else if(state.getCurrentDisplay().equals("0")) {
-            state.setCurrentDisplay(val);
+            state.setCurrentDisplay(value);
         } else {
-            state.setCurrentDisplay(state.getCurrentDisplay() + val);
+            state.setCurrentDisplay(state.getCurrentDisplay() + value);
         }
     }
 }

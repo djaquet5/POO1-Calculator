@@ -32,11 +32,15 @@ public class ChangeSign extends Operator {
     public void execute() {
         State state = getState();
 
-        if(!state.getCurrentDisplay().equals("0")){
-            if(state.getCurrentDisplay().contains("-"))
-                state.setCurrentDisplay(state.getCurrentDisplay().replace("-", ""));
-            else
-                state.setCurrentDisplay("-" + state.getCurrentDisplay());
+//        if(!state.getCurrentDisplay().equals("0")){
+//            if(state.getCurrentDisplay().contains("-"))
+//                state.setCurrentDisplay(state.getCurrentDisplay().replace("-", ""));
+//            else
+//                state.setCurrentDisplay("-" + state.getCurrentDisplay());
+//        }
+        if(!state.isError()){
+            Double currentDisplay = Double.parseDouble(state.getCurrentDisplay());
+            state.setCurrentDisplay(String.valueOf(-currentDisplay));
         }
     }
 

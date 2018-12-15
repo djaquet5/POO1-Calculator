@@ -19,7 +19,7 @@ public class Reversion extends UnaryOperator {
 
       Double result = 1 / Double.parseDouble(state.getCurrentDisplay());
 
-      state.setCurrentDisplay(result.toString());
+      state.setCurrentDisplay(String.valueOf(result));
       state.setRemoveOldDisplay(true);
    }
 
