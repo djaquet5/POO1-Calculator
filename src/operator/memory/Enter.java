@@ -32,6 +32,7 @@ public class Enter extends Operator{
         Double val = Double.parseDouble(state.getCurrentDisplay());
         state.addValue(val);
         state.setCurrentDisplay("0");
+        state.setRemoveOldDisplay(false);
     }
     
 }
