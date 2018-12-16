@@ -1,3 +1,16 @@
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Laboratoire 08
+ Fichier     : Substraction.java
+ Auteur(s)   : Bouyiatiotis - Jaquet
+ Date        : 04.12.2018
+
+ Remarque(s) :
+
+ Compilateur : java 1.8.0_191
+ -----------------------------------------------------------------------------------
+ */
+
 package operator.arithmetic;
 
 import state.State;

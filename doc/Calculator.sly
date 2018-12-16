@@ -205,7 +205,9 @@
       <method isAbstract="false" isStatic="false" name="setCurrentDisplay" returnType="void" view="DEFAULT" visibility="PUBLIC">
         <variable const="false" name="value" type="String"/>
       </method>
-      <method isAbstract="false" isStatic="false" name="addValue" returnType="void" view="DEFAULT" visibility="PUBLIC"/>
+      <method isAbstract="false" isStatic="false" name="addValue" returnType="void" view="DEFAULT" visibility="PUBLIC">
+        <variable const="false" name="value" type="Double"/>
+      </method>
       <method isAbstract="false" isStatic="false" name="removeValue" returnType="Double" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="false" isStatic="false" name="toTab" returnType="Double[]" view="DEFAULT" visibility="PUBLIC"/>
       <method isAbstract="false" isStatic="false" name="isEmpty" returnType="boolean" view="DEFAULT" visibility="PUBLIC">
@@ -487,7 +489,7 @@
       <line>
         <point>
           <x>831</x>
-          <y>436</y>
+          <y>451</y>
         </point>
         <point>
           <x>831</x>
@@ -496,13 +498,13 @@
       </line>
       <labelAssociation>
         <x>753</x>
-        <y>468</y>
+        <y>476</y>
         <w>70</w>
         <h>17</h>
       </labelAssociation>
       <roleAssociation>
         <x>835</x>
-        <y>440</y>
+        <y>455</y>
         <w>0</w>
         <h>17</h>
       </roleAssociation>
@@ -514,7 +516,7 @@
       </roleAssociation>
       <multipliciteAssociation>
         <x>807</x>
-        <y>440</y>
+        <y>455</y>
         <w>8</w>
         <h>17</h>
       </multipliciteAssociation>
@@ -991,8 +993,8 @@
         </point>
       </line>
       <labelAssociation>
-        <x>1164</x>
-        <y>290</y>
+        <x>1149</x>
+        <y>313</y>
         <w>64</w>
         <h>17</h>
       </labelAssociation>

@@ -1,15 +1,33 @@
-   import java.util.*;
+/*
+ -----------------------------------------------------------------------------------
+ Laboratoire : Laboratoire 08
+ Fichier     : Calculator.java
+ Auteur(s)   : Bouyiatiotis - Jaquet
+ Date        : 04.12.2018
 
+ Remarque(s) :
+
+ Compilateur : java 1.8.0_191
+ -----------------------------------------------------------------------------------
+ */
+
+import java.util.*;
 import operator.number.AddNumber;
 import state.State;
-import operator.*;
+import operator.Operator;
 import operator.memory.*;
 import operator.arithmetic.*;
 
+/**
+ * Permet de lancer la calculatrice en mode console
+ */
 public class Calculator {
    private State state = new State();
    private Map<String, Operator> operation;
 
+   /**
+    * Constructeur
+    */
    public Calculator(){
         this.operation = new HashMap<>();
 
@@ -33,6 +51,9 @@ public class Calculator {
        executeCalculator();
     }
 
+   /**
+    * Execute la calculatrice
+    */
    private void executeCalculator(){
       String input;
       Scanner reader = new Scanner(System.in);
@@ -58,6 +79,12 @@ public class Calculator {
       reader.close();
    }
 
+   /**
+    * Effectue l'opération entrée. Si il y a une erreur, on ne peut faire
+    * que les opération CE ou C
+    *
+    * @param input   Opération entrée par l'utilisateur
+    */
    private void makeOperation(String input){
       if(state.isError() && !input.equals("CE") && !input.equals("C"))
          return;
@@ -65,7 +92,15 @@ public class Calculator {
       operation.get(input).execute();
    }
 
+   /**
+    * Ajoute une valeur dans la pile. Si il ne s'agit pas d'un nombre,
+    * On met une erreur dans la calculatrice
+    *
+    * @param input   Valeur entrée par l'utilisateur
+    */
    private void addValues(String input){
+
+      // On rentre de le catch si l'input n'est pas parsable en Double
       try {
          Double number = Double.parseDouble(input);
 
@@ -82,6 +117,9 @@ public class Calculator {
       }
    }
 
+   /**
+    * Affiche l'erreur de la calculatrice
+    */
    private void displayError(){
       if(state.isError()){
          System.out.println(state.getCurrentDisplay());
@@ -89,6 +127,9 @@ public class Calculator {
       }
    }
 
+   /**
+    * Affiche le contenu de la pile. Si la pile est vide, affiche "< empty stack >"
+    */
    private void displayStack(){
       if(state.isEmpty() && state.getCurrentDisplay().equals("0")) {
          System.out.println("< empty stack >\n");

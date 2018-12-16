@@ -1,13 +1,14 @@
 /*
  -----------------------------------------------------------------------------------
- Laboratoire : Labo08
+ Laboratoire : Laboratoire 08
  Fichier     : JCalculator.java
- Auteur(s)   : Bouyiatiotis - jaquet
+ Auteur(s)   : Bouyiatiotis - Jaquet
  Date        : 04.12.2018
 
- Remarque(s) : 
+ Remarque(s) : Nous avons changer l'ordre des appels à la méthode addOperatorButton
+               afin de pouvoir nous y retrouver plus facilement
 
- Compilateur : MinGW-g++ <x.y.z>
+ Compilateur : java 1.8.0_191
  -----------------------------------------------------------------------------------
  */
 
@@ -20,6 +21,9 @@ import operator.number.*;
 import operator.arithmetic.*;
 import state.State;
 
+/**
+ * Interface graphique d'une calculatrice
+ */
 public class JCalculator extends JFrame {
     // Tableau representant une pile vide
     private final String[] empty = {"< empty stack >"};
@@ -39,10 +43,7 @@ public class JCalculator extends JFrame {
      * Mise a jour de l'interface apres une operation (jList et jStack)
      */
     private void update() {
-        // Modifier une zone de texte, JTextField.setText(string nom)
-        // Modifier un composant liste, JList.setListData(Object[] tableau)
-        
-        if(state.getCurrentDisplay().compareTo("") != 0)
+       if(state.getCurrentDisplay().compareTo("") != 0)
             jNumber.setText(state.getCurrentDisplay());
         else 
             jNumber.setText("0");
@@ -96,6 +97,7 @@ public class JCalculator extends JFrame {
         getContentPane().add(jNumber, constraints);
         constraints.gridwidth = 1; // reset width
 
+
         //---------------- memory ------------------------------------------------
         // Rappel de la valeur en memoire
         addOperatorButton("MR", 0, 1, Color.RED, new MemoryRecall(state));
@@ -116,7 +118,8 @@ public class JCalculator extends JFrame {
         addOperatorButton("Ent", 4, 5, Color.RED, new Enter(state));
 
         //---------------- Fin memory --------------------------------------------
-        
+
+
         //---------------- number ------------------------------------------------
         // Boutons 1-9
         for (int i = 1; i < 10; i++) {
@@ -134,6 +137,7 @@ public class JCalculator extends JFrame {
 
         //----------------- Fin number -------------------------------------------
         
+
         //----------------- aritmetic --------------------------------------------
         // Operateurs arithmetiques a deux operandes: /, *, -, +
         addOperatorButton("/", 3, 2, Color.RED, new Division(state));
@@ -148,6 +152,7 @@ public class JCalculator extends JFrame {
 
         //----------------- Fin aritmetic -----------------------------------------
         
+
         // Affichage de la pile
         JLabel jLabel = new JLabel("Stack");
         jLabel.setFont(new Font("Dialog", 0, 12));

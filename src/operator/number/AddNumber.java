@@ -1,34 +1,40 @@
 /*
  -----------------------------------------------------------------------------------
- Laboratoire : Labo08
+ Laboratoire : Laboratoire 08
  Fichier     : AddNumber.java
  Auteur(s)   : Bouyiatiotis - Jaquet
- Date        : 27.112018
+ Date        : 04.12.2018
 
- Remarque(s) : 
+ Remarque(s) :
 
- Compilateur : MinGW-g++ <x.y.z>
+ Compilateur : java 1.8.0_191
  -----------------------------------------------------------------------------------
  */
+
 package operator.number;
 
 import state.State;
 import operator.Operator;
 
 /**
- * Permet de rajouter un nombre dans la chaine de JCalculator
- *
+ * Permet d'ajouter un nombre dans la chaine de affiché par l'état state
  */
 public class AddNumber extends Operator {
     private String value;
 
+    /**
+     * Constructeur
+     *
+     * @param state     Etat de la calculatrice
+     * @param value     Valeur du chiffre à ajouter
+     */
     public AddNumber(State state, String value){
         super(state);
         this.value = value;
     }
 
     /**
-     * Rajoute le nombre voulue dans la chaîne jNumber
+     * Ajoute le nombre voulu à la chaîne affiché par l'état
      */
     @Override
     public void execute() {
