@@ -103,7 +103,8 @@ public class Calculator {
       // On rentre de le catch si l'input n'est pas parsable en Double
       try {
          Double number = Double.parseDouble(input);
-
+         state.setCurrentDisplay(input);
+         
          if(!state.getCurrentDisplay().equals("0")){
             Enter enter = new Enter(state);
             enter.execute();
