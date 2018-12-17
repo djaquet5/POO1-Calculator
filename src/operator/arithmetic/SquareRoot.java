@@ -30,13 +30,12 @@ public class SquareRoot extends UnaryOperator{
     }
 
    /**
-    * La racine carrée de la valeur contenue dans le currentDisplay de l'état
+    * Calcule la racine carrée de la valeur contenue dans le currentDisplay de l'état
     */
    @Override
    public void execute() {
       State state = getState();
-      
-//      if(!isOperationDoable() || !Double.isNaN(value)) {
+
       if(!isOperationDoable()){
          state.setError(true, "Impossible d'obtenir la racine.");
          return;

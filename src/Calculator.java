@@ -103,7 +103,6 @@ public class Calculator {
       // On rentre de le catch si l'input n'est pas parsable en Double
       try {
          Double number = Double.parseDouble(input);
-//         state.setCurrentDisplay(input);
          
          if(!state.getCurrentDisplay().equals("0")){
             Enter enter = new Enter(state);
@@ -147,6 +146,11 @@ public class Calculator {
       System.out.println("\n");
    }
 
+   /**
+    * Fonction principale de la calculatrice en mode console
+    *
+    * @param args    Tableau d'argument éventuellement passé au programme
+    */
    public static void main(String args[]){
       new Calculator();
    }
