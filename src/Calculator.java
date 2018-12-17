@@ -103,13 +103,20 @@ public class Calculator {
       // On rentre de le catch si l'input n'est pas parsable en Double
       try {
          Double number = Double.parseDouble(input);
-         
+
          if(!state.getCurrentDisplay().equals("0")){
             Enter enter = new Enter(state);
             enter.execute();
          }
 
-         AddNumber addNumber = new AddNumber(state, input);
+         // Si la pile est vide, l'utilisateur ne peut rentrer la valeur 0
+         // On rajoute change la valeur par 0.0 pour pouvoir l'ajouter
+         AddNumber addNumber;
+         if(input.equals("0"))
+            addNumber = new AddNumber(state, "0.0");
+         else
+            addNumber = new AddNumber(state, input);
+
          addNumber.execute();
 
       } catch(NumberFormatException e) {
